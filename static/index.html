@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sereia - AI Mental Health Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <!-- Login View -->
+    <div id="login-wrapper" class="login-wrapper active-wrapper">
+        <div class="login-card">
+            <div class="logo-large">
+                <span class="icon">🌿</span>
+                <h1>Sereia</h1>
+            </div>
+            <p class="login-subtitle">Your AI Mental Health Companion</p>
+            <div class="login-form">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="login-username" placeholder="demo_user">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••">
+                </div>
+                <button onclick="handleLogin()" class="login-btn">Secure Login</button>
+                <p id="login-error" class="hidden error-text">Invalid login credentials.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app-wrapper" class="app-container hidden">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <span class="icon">🌿</span>
+                <h2>Sereia</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active" onclick="switchView('chat')">
+                    <span class="icon">💬</span> Chat
+                </li>
+                <li onclick="switchView('dashboard')">
+                    <span class="icon">📊</span> Admin Dashboard
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Chat View -->
+            <section id="chat-view" class="view active-view">
+                <div class="header">
+                    <h2>Your Safe Space</h2>
+                    <p>I'm here to listen, support, and help you navigate your feelings.</p>
+                </div>
+                
+                <div class="chat-container">
+                    <div id="chat-messages" class="messages scrollbar-hidden">
+                        <div class="message bot-message">
+                            <div class="avatar">🌿</div>
+                            <div class="bubble">Hi there. I'm Sereia. How are you feeling today? Take your time, there's no rush.</div>
+                        </div>
+                    </div>
+                    <div id="typing-indicator" class="hidden">Sereia is typing<span class="dots">...</span></div>
+                    
+                    <div class="input-area">
+                        <input type="text" id="user-input" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+                        <button onclick="sendMessage()" class="send-btn">Send</button>
+                    </div>
+                    
+                    <!-- Breathing Exercise Overlay -->
+                    <div id="breathing-overlay" class="hidden">
+                        <div class="breathing-widget">
+                            <h3 id="b-title">4-7-8 Deep Breathing</h3>
+                            <div class="breathing-circle">
+                                <span id="b-instruction">Get Ready</span>
+                            </div>
+                            <p id="b-timer" class="b-timer">3</p>
+                            <button class="action-btn stop-btn" onclick="stopBreathing()">Finish</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard View -->
+            <section id="dashboard-view" class="view hidden">
+                <div class="header">
+                    <h2>Admin Dashboard</h2>
+                    <p>Monitor system-wide user mood trends and manage emotional well-being alerts.</p>
+                </div>
+                
+                <!-- Quick Stats Row -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-icon">👥</span>
+                        <div class="stat-info">
+                            <h4>Total Users</h4>
+                            <p id="stat-total-users">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">📉</span>
+                        <div class="stat-info">
+                            <h4>Average Emotion</h4>
+                            <p id="stat-avg-mood">--</p>
+                        </div>
+                    </div>
+                    <div class="stat-card alert-stat">
+                        <span class="stat-icon">⚠️</span>
+                        <div class="stat-info">
+                            <h4>High Risk Cases</h4>
+                            <p id="stat-alerts">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="card users-card">
+                        <h3>Active Users</h3>
+                        <div class="user-list-container scrollbar-hidden">
+                            <ul id="user-list">
+                                <li>Loading...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3>Mood & Severity Trends</h3>
+                                <p class="chart-subtitle" id="current-user-display">Select a user to begin</p>
+                            </div>
+                            <div id="risk-alert" class="alert hidden">⚠️ High Risk Identified</div>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas id="moodChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="generic-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="modal-title">Activity</h3>
+            <p id="modal-desc">Details</p>
+            <button class="action-btn" onclick="closeModal()">Got it</button>
+        </div>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+/* ============================================================
+   QUANTUM AI — Global Design System
+   Premium AI SaaS Design Language, 2026
+   ============================================================ */
+
+/* Google Fonts — Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS Custom Properties — Quantum AI Color System
+   ============================================================ */
+:root {
+  /* Core Surface */
+  --q-bg:              #f8faff;
+  --q-bg-secondary:    #f1f5f9;
+  --q-surface:         rgba(255, 255, 255, 0.75);
+  --q-surface-raised:  rgba(255, 255, 255, 0.92);
+  --q-border:          rgba(148, 163, 184, 0.2);
+  --q-border-strong:   rgba(148, 163, 184, 0.35);
+
+  /* Primary — Electric Blue */
+  --q-primary:         #3b82f6;
+  --q-primary-hover:   #2563eb;
+  --q-primary-glow:    rgba(59, 130, 246, 0.25);
+
+  /* Accent — Soft Violet */
+  --q-accent:          #8b5cf6;
+  --q-accent-hover:    #7c3aed;
+  --q-accent-glow:     rgba(139, 92, 246, 0.25);
+
+  /* Gradient */
+  --q-gradient:        linear-gradient(135deg, #3b82f6 0%, #6366f1 60%, #8b5cf6 100%);
+  --q-gradient-soft:   linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(139,92,246,0.12) 100%);
+  --q-gradient-glow:   linear-gradient(135deg, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.3) 100%);
+
+  /* Text */
+  --q-text:            #0f172a;
+  --q-text-secondary:  #64748b;
+  --q-text-muted:      #94a3b8;
+  --q-text-inverse:    #ffffff;
+
+  /* Semantic */
+  --q-success:         #10b981;
+  --q-success-bg:      rgba(16, 185, 129, 0.1);
+  --q-warning:         #f59e0b;
+  --q-warning-bg:      rgba(245, 158, 11, 0.1);
+  --q-danger:          #f43f5e;
+  --q-danger-bg:       rgba(244, 63, 94, 0.1);
+  --q-info:            #0ea5e9;
+  --q-info-bg:         rgba(14, 165, 233, 0.1);
+
+  /* Shadows */
+  --q-shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --q-shadow-md:  0 4px 16px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
+  --q-shadow-lg:  0 10px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --q-shadow-xl:  0 20px 60px rgba(0,0,0,0.1), 0 8px 20px rgba(0,0,0,0.06);
+  --q-shadow-glow:0 0 0 1px rgba(59,130,246,0.15), 0 4px 24px rgba(59,130,246,0.12);
+}
+
+.dark {
+  /* Core Surface */
+  --q-bg:              #09090f;
+  --q-bg-secondary:    #0f0f1a;
+  --q-surface:         rgba(15, 15, 28, 0.80);
+  --q-surface-raised:  rgba(20, 20, 36, 0.95);
+  --q-border:          rgba(255, 255, 255, 0.06);
+  --q-border-strong:   rgba(255, 255, 255, 0.1);
+
+  /* Primary */
+  --q-primary:         #60a5fa;
+  --q-primary-hover:   #93c5fd;
+  --q-primary-glow:    rgba(96, 165, 250, 0.25);
+
+  /* Accent */
+  --q-accent:          #a78bfa;
+  --q-accent-hover:    #c4b5fd;
+  --q-accent-glow:     rgba(167, 139, 250, 0.25);
+
+  /* Gradient */
+  --q-gradient:        linear-gradient(135deg, #60a5fa 0%, #818cf8 60%, #a78bfa 100%);
+  --q-gradient-soft:   linear-gradient(135deg, rgba(96,165,250,0.12) 0%, rgba(167,139,250,0.12) 100%);
+  --q-gradient-glow:   linear-gradient(135deg, rgba(96,165,250,0.25) 0%, rgba(167,139,250,0.25) 100%);
+
+  /* Text */
+  --q-text:            #f1f5f9;
+  --q-text-secondary:  #94a3b8;
+  --q-text-muted:      #64748b;
+  --q-text-inverse:    #0f172a;
+
+  /* Semantic */
+  --q-success:         #34d399;
+  --q-success-bg:      rgba(52, 211, 153, 0.1);
+  --q-warning:         #fbbf24;
+  --q-warning-bg:      rgba(251, 191, 36, 0.1);
+  --q-danger:          #fb7185;
+  --q-danger-bg:       rgba(251, 113, 133, 0.1);
+  --q-info:            #38bdf8;
+  --q-info-bg:         rgba(56, 189, 248, 0.1);
+
+  /* Shadows */
+  --q-shadow-sm:  0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --q-shadow-md:  0 4px 16px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.2);
+  --q-shadow-lg:  0 10px 40px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.25);
+  --q-shadow-xl:  0 20px 60px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.3);
+  --q-shadow-glow:0 0 0 1px rgba(96,165,250,0.15), 0 4px 24px rgba(96,165,250,0.12);
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans text-slate-900 dark:text-slate-100 transition-colors duration-300;
+    background-color: var(--q-bg);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    letter-spacing: -0.01em;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  /* Smooth focus */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: var(--q-primary);
+  }
+
+  /* Text selection */
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.2);
+    color: inherit;
+  }
+}
+
+/* ============================================================
+   Quantum AI Utility Classes
+   ============================================================ */
+@layer utilities {
+  /* ── Glass Effects ── */
+  .glass-card {
+    background: var(--q-surface);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--q-border);
+    border-radius: 1.5rem;
+    box-shadow: var(--q-shadow-md), inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+
+  .dark .glass-card {
+    box-shadow: var(--q-shadow-md), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .glass-card-sm {
+    background: var(--q-surface);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid var(--q-border);
+    border-radius: 1rem;
+    box-shadow: var(--q-shadow-sm), inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+
+  .glass-panel {
+    background: var(--q-surface);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid var(--q-border-strong);
+    box-shadow: var(--q-shadow-lg), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+
+  .dark .glass-panel {
+    box-shadow: var(--q-shadow-lg), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .dark .glass-input {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-input:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+  }
+
+  /* ── Gradient Text ── */
+  .gradient-text {
+    background: var(--q-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .gradient-text-blue {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ── Gradient Backgrounds ── */
+  .quantum-gradient {
+    background: var(--q-gradient);
+  }
+
+  .quantum-gradient-soft {
+    background: var(--q-gradient-soft);
+  }
+
+  /* ── Glow Effects ── */
+  .quantum-glow {
+    box-shadow: 0 0 20px var(--q-primary-glow), 0 0 40px var(--q-accent-glow);
+  }
+
+  .quantum-glow-sm {
+    box-shadow: 0 0 12px var(--q-primary-glow);
+  }
+
+  /* ── Shimmer Loading ── */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(148, 163, 184, 0.08) 0%,
+      rgba(148, 163, 184, 0.18) 50%,
+      rgba(148, 163, 184, 0.08) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+  }
+
+  .dark .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 0%,
+      rgba(255,255,255,0.08) 50%,
+      rgba(255,255,255,0.03) 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* ── Quantum Card ── */
+  .quantum-card {
+    @apply glass-card;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quantum-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--q-shadow-lg), var(--q-shadow-glow), inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+
+  /* ── Sidebar ── */
+  .sidebar-nav-item {
+    @apply flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 gap-3;
+    color: var(--q-text-secondary);
+  }
+
+  .sidebar-nav-item:hover {
+    background: rgba(99, 102, 241, 0.07);
+    color: var(--q-text);
+  }
+
+  .dark .sidebar-nav-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .sidebar-nav-item.active {
+    background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(139,92,246,0.12));
+    color: #4f46e5;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+
+  .dark .sidebar-nav-item.active {
+    background: linear-gradient(135deg, rgba(96,165,250,0.15), rgba(167,139,250,0.15));
+    color: #a78bfa;
+  }
+
+  /* ── Animation Delays ── */
+  .animation-delay-150  { animation-delay: 150ms; }
+  .animation-delay-300  { animation-delay: 300ms; }
+  .animation-delay-500  { animation-delay: 500ms; }
+  .animation-delay-700  { animation-delay: 700ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+  .animation-delay-2000 { animation-delay: 2000ms; }
+  .animation-delay-4000 { animation-delay: 4000ms; }
+
+  /* ── Custom Scrollbar ── */
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 100px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.4);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ── Gradient Border ── */
+  .gradient-border {
+    position: relative;
+    background-clip: padding-box;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--q-gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ── Prose overrides for chat ── */
+  .prose-chat {
+    @apply text-sm leading-relaxed;
+  }
+
+  .prose-chat p { @apply mb-2 last:mb-0; }
+  .prose-chat ul { @apply list-disc pl-4 mb-2 space-y-1; }
+  .prose-chat ol { @apply list-decimal pl-4 mb-2 space-y-1; }
+  .prose-chat code {
+    @apply text-xs px-1.5 py-0.5 rounded-md font-mono;
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+  }
+  .dark .prose-chat code {
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+  }
+  .prose-chat pre {
+    @apply text-xs p-3 rounded-xl mb-2 overflow-x-auto;
+    background: rgba(15, 23, 42, 0.06);
+    border: 1px solid var(--q-border);
+  }
+  .dark .prose-chat pre {
+    background: rgba(255,255,255,0.04);
+  }
+  .prose-chat strong { @apply font-semibold; }
+  .prose-chat em { @apply italic; }
+
+  /* ── Page transition ── */
+  .page-enter { animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+}
+
+/* ============================================================
+   Keyframe Definitions (referenced by Tailwind animation)
+   ============================================================ */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(99, 102, 241, 0.3); }
+  50%       { box-shadow: 0 0 20px rgba(99, 102, 241, 0.6); }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.smart-action-card {
+  animation-name: slideUpFade;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
